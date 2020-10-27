@@ -9,11 +9,14 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  * Created by manuelchris-ogar on 24/10/2020.
  */
 @Entity(tableName = "farmer")
-public class Farmer {
+public class Farmer implements Serializable {
 
 
     public String base_url;
@@ -23,6 +26,15 @@ public class Farmer {
     public int id;
 
 
+    public ArrayList<String> getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(ArrayList<String> coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    private ArrayList<String> coordinates  = new ArrayList<>();
 
 
 
@@ -326,5 +338,7 @@ public class Farmer {
         Farmer farmer = (Farmer) obj;
         return farmer.farmerId.equalsIgnoreCase(this.farmerId);
     }
+
+
 
 }
