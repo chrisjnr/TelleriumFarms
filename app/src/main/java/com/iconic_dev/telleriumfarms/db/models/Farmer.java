@@ -37,6 +37,26 @@ public class Farmer implements Serializable {
     private ArrayList<String> coordinates  = new ArrayList<>();
 
 
+    private String farmName;
+
+
+    public String getFarmName() {
+        return farmName;
+    }
+
+    public void setFarmName(String farmerName) {
+        this.farmName = farmerName;
+    }
+
+    public String getFarmLocation() {
+        return farmLocation;
+    }
+
+    public void setFarmLocation(String farmLocation) {
+        this.farmLocation = farmLocation;
+    }
+
+    private String farmLocation;
 
 
     @SerializedName("farmer_id")
