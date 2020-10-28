@@ -359,6 +359,39 @@ public class Farmer implements Serializable {
         return farmer.farmerId.equalsIgnoreCase(this.farmerId);
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Farmer{" +
+                "base_url='" + base_url + '\'' +
+                ", id=" + id +
+                ", coordinates=" + coordinates +
+                ", farmName='" + farmName + '\'' +
+                ", farmLocation='" + farmLocation + '\'' +
+                ", farmerId='" + farmerId + '\'' +
+                ", regNo='" + regNo + '\'' +
+                ", bvn='" + bvn + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", dob='" + dob + '\'' +
+                ", gender='" + gender + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", occupation='" + occupation + '\'' +
+                ", maritalStatus='" + maritalStatus + '\'' +
+                ", spouseName='" + spouseName + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", lga='" + lga + '\'' +
+                ", state='" + state + '\'' +
+                ", mobileNo='" + mobileNo + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", idType='" + idType + '\'' +
+                ", idNo='" + idNo + '\'' +
+                ", issueDate='" + issueDate + '\'' +
+                ", expiryDate='" + expiryDate + '\'' +
+                ", idImage='" + idImage + '\'' +
+                ", passportPhoto='" + passportPhoto + '\'' +
+                ", fingerprint='" + fingerprint + '\'' +
+                '}';
+    }
 }
