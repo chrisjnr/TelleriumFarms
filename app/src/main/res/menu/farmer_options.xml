@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+
+    <item android:id="@+id/viewFarmer" android:icon="@drawable/ic_view"
+        android:enabled="true"
+        android:title="View Farmer" />
+
+
+    <item android:id="@+id/addLocation" android:icon="@drawable/ic_location"
+        android:enabled="true"
+        android:title="Add Coordinates" />
+
+
+<!--    <item android:id="@+id/logoutFragment" android:icon="@drawable/ic_logout"-->
+<!--        android:enabled="true"-->
+<!--        android:title="View On Map" />-->
+</menu>
