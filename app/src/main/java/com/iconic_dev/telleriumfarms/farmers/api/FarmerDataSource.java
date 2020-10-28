@@ -31,7 +31,7 @@ public class FarmerDataSource extends PageKeyedDataSource<Integer, Farmer> {
 
     private FarmersRepository repository;
     private Gson gson;
-    private int sourceIndex=20;
+    private int sourceIndex=2;
     int lastIndex;
     private MutableLiveData<String> base_url;
     private MutableLiveData<String> progressLiveStatus;
@@ -70,12 +70,14 @@ public class FarmerDataSource extends PageKeyedDataSource<Integer, Farmer> {
                             progressLiveStatus.postValue(Constant.LOADED);
 //                            base_url.postValue(result.getData().getImageBaseUrl());
                             lastIndex = sourceIndex;
-                            sourceIndex+=20;
+                            sourceIndex+=2;
                             result.getData().getFarmers().get(0).base_url = result.getData().getImageBaseUrl();
                             callback.onResult(result.getData().getFarmers(), null, sourceIndex);
                         },
-                        throwable ->
-                                progressLiveStatus.postValue(Constant.LOADED)
+                        throwable ->{
+                            progressLiveStatus.postValue(Constant.CHECK_NETWORK_ERROR);
+
+                        }
 
                 );
 
@@ -104,11 +106,11 @@ public class FarmerDataSource extends PageKeyedDataSource<Integer, Farmer> {
                             List<Farmer> listToAdd = result.getData().getFarmers().subList(lastIndex,result.getData().getFarmers().size());
 
                             lastIndex = params.key;
-                            callback.onResult(listToAdd, params.key == result.getData().getTotalRec().intValue() ? null : params.key + 20);
+                            callback.onResult(listToAdd, params.key == result.getData().getTotalRec().intValue() ? null : params.key + 2);
 
                         },
                         throwable ->
-                                progressLiveStatus.postValue(Constant.LOADED)
+                                progressLiveStatus.postValue(Constant.CHECK_NETWORK_ERROR)
                 );
     }
 }
