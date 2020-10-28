@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.iconic_dev.telleriumfarms.ui.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_captureFragment2"
+            app:destination="@id/captureFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_updateFarmerFragment"
+            app:destination="@id/updateFarmerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/captureFragment"
+        android:name="com.iconic_dev.telleriumfarms.ui.capture.CaptureFragment"
+        android:label="fragment_capture"
+        tools:layout="@layout/fragment_capture" >
+        <action
+            android:id="@+id/action_captureFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFarmerFragment"
+        android:name="com.iconic_dev.telleriumfarms.ui.update_farmer.UpdateFarmerFragment"
+        android:label="fragment_update_farmer"
+        tools:layout="@layout/fragment_update_farmer" />
+    <fragment
+        android:id="@+id/logoutFragment"
+        android:name="com.iconic_dev.telleriumfarms.ui.LogoutFragment"
+        android:label="LogoutFragment" />
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.iconic_dev.telleriumfarms.ui.maps.MapsActivity"
+        android:label="activity_maps"
+        tools:layout="@layout/activity_maps" />
+</navigation>

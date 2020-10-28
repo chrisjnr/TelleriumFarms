@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+
+    <item android:id="@+id/homeFragment" android:icon="@drawable/ic_home"
+        android:enabled="true"
+        android:title="Home" />
+
+
+    <item android:id="@+id/captureFragment" android:icon="@drawable/ic_contract"
+        android:enabled="true"
+        android:title="Captures" />
+
+
+    <item android:id="@+id/logoutFragment" android:icon="@drawable/ic_logout"
+        android:enabled="true"
+        android:title="Logout" />
+</menu>
