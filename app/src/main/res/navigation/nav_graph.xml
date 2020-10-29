@@ -18,7 +18,7 @@
         android:name="com.iconic_dev.telleriumfarms.ui.update_farmer.UpdateFarmerFragment"
         android:label="fragment_update_farmer"
         tools:layout="@layout/fragment_update_farmer" />
-    <fragment
+    <dialog
         android:id="@+id/logoutFragment"
         android:name="com.iconic_dev.telleriumfarms.ui.LogoutFragment"
         android:label="LogoutFragment" />
