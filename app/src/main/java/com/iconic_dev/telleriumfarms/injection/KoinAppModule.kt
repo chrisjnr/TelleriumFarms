@@ -1,6 +1,7 @@
 package com.iconic_dev.telleriumfarms.injection
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.iconic_dev.telleriumfarms.BuildConfig
 import com.iconic_dev.telleriumfarms.FarmersViewModel
 import com.iconic_dev.telleriumfarms.api.TelleriumApi
@@ -10,6 +11,8 @@ import com.iconic_dev.telleriumfarms.api.config.ConnectivityCheckerInterceptor
 import com.iconic_dev.telleriumfarms.farmers.FarmersRepository
 import com.iconic_dev.telleriumfarms.farmers.api.FarmersDataSourceFactory
 import com.iconic_dev.telleriumfarms.injection.modules.allRepositoryViewModules
+import com.iconic_dev.telleriumfarms.ui.base.UserPrefs
+import com.iconic_dev.telleriumfarms.ui.base.UserPrefs.PREFS_NAME
 import com.iconic_dev.wecycler.api.config.NetworkResponseAdapterFactory
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.OkHttpClient
@@ -56,13 +59,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
     private fun provideFarmer() = Farmer()
 
+private fun provideUserPrefs(context: Context):UserPrefs = UserPrefs(context)
 
-//    private fun provideFarmersDataSourceFactory(farmer: Farmer, viewModel: FarmersViewModel) = FarmersDataSourceFactory(farmer, viewModel)
-
-
-//    private fun provideFarmerDataSource(viewModel: FarmersViewModel)
-
-//  private fun provide
 
 
     private fun provideDb(context: Context):FarmersDatabase  = FarmersDatabase.getInstance(context)
@@ -74,5 +72,5 @@ import retrofit2.converter.gson.GsonConverterFactory
         single { provideApiService(get()) }
         single { provideDb(androidContext()) }
         single { provideFarmer() }
-//        single { provideFarmersDataSourceFactory(get(), get()) }
+        single { provideUserPrefs(androidContext()) }
     }
