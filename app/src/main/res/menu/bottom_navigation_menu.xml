@@ -9,7 +9,7 @@
 
     <item android:id="@+id/homeFragment" android:icon="@drawable/ic_checklist"
         android:enabled="true"
-        android:title="Home" />
+        android:title="All Farmers" />
 
 
     <item android:id="@+id/captureFragment" android:icon="@drawable/ic_contract"
