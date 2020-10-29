@@ -1,7 +1,6 @@
 package com.iconic_dev.telleriumfarms.farmers
 
 
-import com.google.gson.JsonElement
 import com.iconic_dev.telleriumfarms.api.TelleriumApi
 import com.iconic_dev.telleriumfarms.db.FarmersDatabase
 import com.iconic_dev.telleriumfarms.db.models.Farmer
@@ -13,8 +12,6 @@ import io.reactivex.Observable
  */
 class FarmersRepository(private val telleriumApi: TelleriumApi, private val db:FarmersDatabase) {
 
-    suspend fun getFarmersFromApi(limit:Int) = telleriumApi.getFarmers(limit = limit)
-
 
     suspend fun updateFarmer(farmer: Farmer) = db.sleepDatabaseDao.update(farmer)
 
@@ -22,14 +19,6 @@ class FarmersRepository(private val telleriumApi: TelleriumApi, private val db:F
 
 
     fun getAllFarmers() = db.sleepDatabaseDao.getAll()
-
-//    fun getSearchResultStream(number: Int): Flow<PagingData<Farmer>> {
-//        return Pager(
-//            config = PagingConfig(number),
-//            pagingSourceFactory = { FarmerDataSource(this) }
-//        ).flow
-//    }
-
 
     fun executeNewsApi(index: Int): Observable<FarmerResponse?>? {
         return telleriumApi.fetchListNews(index)
