@@ -1,6 +1,7 @@
 package com.iconic_dev
 
 import android.app.Application
+import com.iconic_dev.telleriumfarms.injection.appModule
 import com.iconic_dev.telleriumfarms.injection.modules.allRepositoryViewModules
 import com.iconic_dev.telleriumfarms.injection.modules.allViewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -16,7 +17,7 @@ class App : Application() {
 
         startKoin {
             androidContext(this@App)
-            modules(listOf(allRepositoryViewModules, allViewModelModule))
+            modules(listOf(appModule, allRepositoryViewModules, allViewModelModule))
         }
     }
 }
