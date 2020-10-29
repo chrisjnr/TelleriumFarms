@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    app:cardCornerRadius="15dp"
+    android:layout_marginTop="10dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/farmerImage"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="1.5"
+            android:gravity="center_vertical|center_horizontal"
+            android:src="@drawable/ic_man"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/farmerName"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginTop="16dp"
+            android:layout_weight="2.5"
+            android:fontFamily="@font/poppins"
+            android:gravity="center_vertical|start"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/farmerImage"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Maduka Okoye" />
+
+        <TextView
+            android:id="@+id/farmerAge"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="30dp"
+            android:layout_height="19dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/farmerImage"
+            app:layout_constraintStart_toEndOf="@+id/farmerGendere"
+            app:layout_constraintTop_toBottomOf="@+id/farmerName"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="40" />
+
+
+        <TextView
+            android:id="@+id/farmerGendere"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="18dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins"
+            android:gravity="center_vertical|start"
+            android:text="F"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/farmerImage"
+            app:layout_constraintStart_toEndOf="@+id/farmerImage"
+            app:layout_constraintTop_toBottomOf="@+id/farmerName"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="F" />
+
+
+        <TextView
+            android:id="@+id/marital_status"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="73dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@color/main_green_color"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/occupation"
+            app:layout_constraintStart_toEndOf="@+id/farmerAge"
+            tools:text="Married" />
+
+        <TextView
+            android:id="@+id/occupation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="Occupation"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/farmerImage"
+            app:layout_constraintStart_toEndOf="@+id/farmerImage"
+            app:layout_constraintTop_toBottomOf="@+id/farmerGendere"
+            app:layout_constraintVertical_bias="0.016" />
+
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="Address"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/occupation"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/occupation"
+            app:layout_constraintTop_toBottomOf="@+id/occupation" />
+
+
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:id="@+id/id_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voter's Card"
+            app:layout_constraintStart_toStartOf="@+id/address"
+            app:layout_constraintTop_toBottomOf="@+id/address" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
