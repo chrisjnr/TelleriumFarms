@@ -1,38 +1,51 @@
 package com.iconic_dev.telleriumfarms.ui.maps
 
 import android.os.Bundle
-import android.util.Log
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Polygon
-import com.google.android.gms.maps.model.Polyline
-import com.google.android.gms.maps.model.PolylineOptions
+import com.google.android.gms.maps.model.*
+import com.iconic_dev.telleriumfarms.FarmersViewModel
 import com.iconic_dev.telleriumfarms.R
 import com.iconic_dev.telleriumfarms.db.models.Farmer
+import com.iconic_dev.telleriumfarms.utils.ConfirmDialog
+import org.koin.android.viewmodel.ext.android.viewModel
+import java.util.*
 
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnPolylineClickListener,
-    GoogleMap.OnPolygonClickListener {
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
+    GoogleMap.OnPolygonClickListener, GoogleMap.OnMarkerDragListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerClickListener{
+
+
+    private lateinit var farmer: Farmer
+    private lateinit var storedfarmerList: MutableList<Farmer>
+    val viewModel: FarmersViewModel by viewModel()
 
     private lateinit var mMap: GoogleMap
 
+    private lateinit var coLList : MutableList<LatLng>
     private lateinit var coordinatesList: MutableList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
 
-//        Log.e("PPP", intent.("farmer")!!.keySet().toString())
-//        val builder = StringBuilder("Extras:\n")
-//        for (key in intent.extras!!.keySet()) { //extras is the Bundle containing info
-//            val value = intent!!.extras!![key]?.toString() //get the current object
-//            builder.append(key).append(": ").append(value)
-//                .append("\n") //add the key-value pair to the
-//        }
+        viewModel.storedFarmers!!.observe(this, Observer {
+            storedfarmerList = it
+
+        })
+
+
+        findViewById<ImageView>(R.id.closeFragment).setOnClickListener {
+           finish()
+        }
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -50,7 +63,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnPolyli
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
-//        mMap = googleMap
+        mMap = googleMap
 //
 //        // Add a marker in Sydney and move the camera
 //        val sydney = LatLng(-34.0, 151.0)
@@ -58,7 +71,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnPolyli
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
 
         intent.extras!!["farmer"].let {
-            val farmer = intent.extras!!["farmer"] as Farmer
+            farmer = intent.extras!!["farmer"] as Farmer
             coordinatesList = farmer.coordinates
 
             val polylist = coordinatesList.map {
@@ -68,22 +81,42 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnPolyli
                 )
             }
 
-            val options = PolylineOptions().clickable(true).addList(polylist)
-            val polyline1 = googleMap.addPolyline(options)
+            if (polylist.isNotEmpty()){
+                val options = PolygonOptions().clickable(true).addList(polylist)
+                googleMap.addPolygon(options)
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(polylist[0], 13f))
+               googleMap.addMarker(
+                    MarkerOptions()
+                        .position(polylist[0])
+                        .title("Click to Save Coordinates")
+                        .draggable(true)
+                )
 
+            }else{
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(7.2,5.3), 13f))
+                googleMap.addMarker(
+                    MarkerOptions()
+                        .position(LatLng(7.2,5.3))
+                        .title("Click to Save Coordinates")
+                        .draggable(true)
+                )
 
-            // Position the map's camera near Alice Springs in the center of Australia,
-            // and set the zoom factor so most of Australia shows on the screen.
-
-            // Position the map's camera near Alice Springs in the center of Australia,
-            // and set the zoom factor so most of Australia shows on the screen.
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(-23.684, 133.903), 4f))
+            }
 
             // Set listeners for click events.
-
-            // Set listeners for click events.
-            googleMap.setOnPolylineClickListener(this)
             googleMap.setOnPolygonClickListener(this)
+            googleMap.setOnMarkerDragListener(this)
+            googleMap.setOnMapLongClickListener(this)
+            googleMap.setOnMarkerClickListener(this)
+
+
+            SweetAlertDialog(this)
+                .setTitleText("Info")
+                .setContentText(
+                    "Long Press when you want to clear current coordinates\nand Plot new ones"
+                )
+                .show()
+
 
 
         }
@@ -92,18 +125,88 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnPolyli
 
     }
 
-    override fun onPolylineClick(p0: Polyline?) {
-
-    }
 
     override fun onPolygonClick(p0: Polygon?) {
+        p0!!.fillColor = R.color.colorAccent
     }
 
-    fun PolylineOptions.addList(mutableList: List<LatLng>):PolylineOptions{
+    fun PolygonOptions.addList(mutableList: List<LatLng>):PolygonOptions{
         mutableList.forEach {
             this.add(it)
         }
 
         return this
+    }
+
+    override fun onMarkerDragStart(p0: Marker?) {
+        coLList = mutableListOf()
+        coLList.add(p0!!.position)
+    }
+
+    override fun onMarkerDrag(p0: Marker?) {
+
+        coLList.add(p0!!.position)
+//        for (i in 0 until coLList.size) {
+
+//        }
+    }
+
+    override fun onMarkerDragEnd(p0: Marker?) {
+        coLList.add(p0!!.position)
+        mMap.clear()
+        val options = PolygonOptions().clickable(true).addList(coLList)
+
+        mMap.addPolygon(
+            options
+        )
+
+        mMap.addMarker(
+            MarkerOptions()
+                .position(coLList.last())
+                .title("New Plot")
+                .draggable(true)
+        )
+        Toast.makeText(this, "Tap this Marker to Save Coordinates", Toast.LENGTH_SHORT).show()
+
+//        Toast.makeText(this, "")
+    }
+
+
+    override fun onMapLongClick(p0: LatLng?) {
+        mMap.clear()
+        mMap.addMarker(MarkerOptions().draggable(true)
+            .position(p0!!)
+            .title("Drag this Marker to Plot Coordinates"))
+
+        Toast.makeText(this, "Drag this Marker to Plot Coordinates", Toast.LENGTH_SHORT).show()
+
+
+    }
+
+    override fun onMarkerClick(p0: Marker?): Boolean {
+        val actions = ConfirmDialog(title = "Update Coordinates For this Farmer?", positiveText = "Save",negativeText = "Cancel" ){
+            val  found = storedfarmerList.any { it.farmerId == farmer.farmerId }
+
+            if (coLList.isNotEmpty()){
+                val coordinateList =  coLList.map { "${it.latitude},${it.longitude}" }
+                farmer.coordinates = coordinateList as ArrayList<String>
+
+                if(found) {
+                    val farmerToUpdate = storedfarmerList.filter { it.farmerId == farmer.farmerId }
+                    farmerToUpdate[0].coordinates = coordinateList as ArrayList<String>
+                    viewModel.updateFarmer(farmerToUpdate[0])
+                }
+                else viewModel.addFarmer(farmer)
+                SweetAlertDialog(this)
+                    .setTitleText("Info")
+                    .setContentText(
+                        "Coordinates\nSaved"
+                    )
+                    .show()
+            }
+
+        }
+        actions.show(supportFragmentManager, "")
+        return true
     }
 }
