@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="standard_margin_or_padding">16dp</dimen>
+    <dimen name="margin_5dp">5dp</dimen>
+    <dimen name="dimen_20dp">20dp</dimen>
+
+    <dimen name="gutter_width">16dp</dimen>
+
+    <!-- textview padding -->
+    <dimen name="padding_textview">8dp</dimen>
+
+
+    <dimen name="margin_view">8dp</dimen>
+    <dimen name="parent_padding_small">10dp</dimen>
+    <dimen name="network_logo_image_size">36dp</dimen>
+    <dimen name="textsize_small">15dp</dimen>
+
+
+</resources>

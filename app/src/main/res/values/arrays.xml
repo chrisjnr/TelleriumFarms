@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="icons" >
+        <item>@drawable/ic_user</item>
+        <item>@drawable/ic_flag</item>
+        <item>@drawable/ic_location</item>
+        <item>@drawable/ic_map</item>
+    </string-array>
+    <string-array name="colors" >
+        <item>@color/colorAccent</item>
+        <item>@color/blue_btn_bg_pressed_color</item>
+        <item>@color/red_btn_bg_color</item>
+        <item>@color/theme_yellow_color</item>
+    </string-array>
+
+    <array  name="pie_colors">
+        <item>@color/colorAccent</item>
+        <item>@color/blue_btn_bg_pressed_color</item>
+        <item>@color/red_btn_bg_color</item>
+        <item>@color/theme_red</item>
+
+        <item>@color/theme_dark_grey_color</item>
+
+        <item>@color/theme_yellow_color</item>
+        <item>@color/theme_green_color</item>
+        <item>@color/black</item>
+        <item>@color/light_black</item>
+
+        <item>@color/white</item>
+        <item>@color/background_grey_dull</item>
+        <item>@color/mint_green</item>
+        <item>@color/light_text_grey</item>
+    </array>
+
+</resources>
