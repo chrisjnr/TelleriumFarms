@@ -31,11 +31,11 @@ class CoordinateAdapter(val coordinatesList: ArrayList<String>): RecyclerView.Ad
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
         val coordinates = coordinatesList[position]
 
-        val longitude = coordinates.split(",")[0]
+        val longitude = coordinates.split(",")[0].substring(0,6)
 
         holder.longitude.text = "Longitude: $longitude"
 
-        val latitude = coordinates.split(",")[1]
+        val latitude = coordinates.split(",")[1].substring(0,6)
 
         holder.latitude.text ="Longitude: $latitude"
     }
