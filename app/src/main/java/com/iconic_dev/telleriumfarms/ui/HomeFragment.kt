@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -54,7 +55,9 @@ class HomeFragment : Fragment(), ModalBottomSheetDialog.Listener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            requireActivity().findNavController(R.id.nav_host).navigate(R.id.logoutFragment)
+        }
         adapter = FarmersAdapter("", object :   FarmersAdapter.onClickListener{
             override fun viewMore(farmer: Farmer) {
                 selectedFarmer = farmer
