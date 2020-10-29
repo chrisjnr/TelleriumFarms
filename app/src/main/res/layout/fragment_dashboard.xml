@@ -12,6 +12,19 @@
         tools:context="com.iconic_dev.telleriumfarms.ui.dash.DashboardFragment"
         android:orientation="vertical">
 
+
+
+        <TextView
+            android:id="@+id/numberOfFarms"
+            android:text="Total Number Of Farms"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <TextView
             android:text="Current Gender Representation"
             android:layout_gravity="center_horizontal"
