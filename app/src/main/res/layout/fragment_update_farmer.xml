@@ -1,0 +1,199 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.iconic_dev.telleriumfarms.ui.update_farmer.UpdateFarmerFragment">
+
+
+    <RelativeLayout
+        android:padding="@dimen/activity_horizontal_margin"
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_marginBottom="10dp">
+
+
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/closeFragment"
+            android:src="@drawable/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:layout_centerVertical="true"
+            android:id="@+id/pageTitle"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:layout_gravity="center_vertical"
+            android:text="Edit Farmer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_below="@id/appbar"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="90dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            tools:src="@drawable/ic_woman"
+            android:id="@+id/farmerImage"
+            android:layout_height="90dp"/>
+
+        <TextView
+            android:layout_below="@id/farmerImage"
+            android:padding="@dimen/margin_5dp"
+            android:id="@+id/farmerName"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:textColor="@android:color/black"
+            tools:text="Ahmed Musa"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_below="@id/farmerName"
+            android:padding="@dimen/margin_5dp"
+            android:id="@+id/farmerGender"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            tools:text="Female"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_below="@+id/farmerGender"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:id="@+id/updatedDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Farm Name"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/farmName"
+                tools:text="sjskjdskdkjsd"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_below="@+id/updatedDetails"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:id="@+id/updatedLocationDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Farm Location"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/farmLocation"
+                android:layout_gravity="end"
+                android:gravity="end"
+                tools:text="sjskjdskdkjsd"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+        <TextView
+            android:layout_marginTop="25dp"
+            android:textStyle="bold"
+            android:layout_below="@id/updatedLocationDetails"
+            android:id="@+id/info"
+            android:text="All Farm Coordinates"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/info"
+            android:orientation="vertical"
+            android:id="@+id/emptyList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_broke"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:text="Sorry, You Do not have any Saved Coordinates For this Farmer"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/emptyList"
+            android:id="@+id/updateFarmerRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+        <com.imangazaliev.circlemenu.CircleMenu
+
+            app:maxAngle="180"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/circleMenu"
+            android:layout_gravity="end"
+            android:layout_marginEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:buttonColors="@array/colors"
+            app:buttonIcons="@array/icons" />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,139 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.iconic_dev.telleriumfarms.ui.dash.DashboardFragment"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="com.iconic_dev.telleriumfarms.ui.dash.DashboardFragment"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:id="@+id/numberOfFarms"
+            android:text="Total Number Of Farms"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Current Gender Representation"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+
+
+        <com.faskn.lib.ClickablePieChart
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:centerColor="@color/white"
+            app:popupText="Ziyaret"
+            app:showPercentage="true"
+            app:animationDuration="2000"
+            app:showPopup="true" />
+
+
+        <FrameLayout
+            android:gravity="center_horizontal|center_vertical"
+            android:id="@+id/legendLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5" />
+
+    </LinearLayout>
+
+
+        <TextView
+
+            android:textColor="@color/colorAccent"
+            android:layout_margin="10dp"
+            android:id="@+id/statsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+            <ProgressBar
+                android:id="@+id/progress_bar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <com.anychart.AnyChartView
+                android:layout_marginTop="10dp"
+                android:id="@+id/any_chart_view_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"/>
+
+
+
+
+
+
+        <TextView
+            android:text="Current States Representation"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+
+
+            <com.faskn.lib.ClickablePieChart
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/chartStates"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:centerColor="@color/white"
+                app:popupText="Ziyaret"
+                app:showPercentage="true"
+                app:animationDuration="2000"
+                app:showPopup="true" />
+
+
+            <FrameLayout
+                android:gravity="center_horizontal|center_vertical"
+                android:id="@+id/legendLayoutStates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</ScrollView>
