@@ -70,7 +70,7 @@ class FarmersViewHolder(
         try {
             if (!TextUtils.isEmpty(thumb)) Picasso.get().load(thumb)
                 .fit()
-                .centerCrop()
+                .centerInside()
                 .placeholder(placeholder)
                 .into(farmerImage, object : Callback {
                     override fun onSuccess() {

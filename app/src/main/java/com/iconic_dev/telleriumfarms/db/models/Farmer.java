@@ -25,6 +25,16 @@ public class Farmer implements Serializable {
     @ColumnInfo(name = "id")
     public int id;
 
+    private String getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public String dateCreated;
+
 
     public ArrayList<String> getCoordinates() {
         return coordinates;

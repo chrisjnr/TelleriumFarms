@@ -11,7 +11,7 @@ import com.iconic_dev.telleriumfarms.utils.Converters
 /**
  * Created by manuelchris-ogar on 24/10/2020.
  */
-@Database(entities = [Farmer::class], version = 1, exportSchema = false)
+@Database(entities = [Farmer::class], version = 5, exportSchema = false)
 @TypeConverters(value = [Converters::class])
 abstract class FarmersDatabase : RoomDatabase(){
     abstract val sleepDatabaseDao: FarmersDao
